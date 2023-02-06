@@ -10,40 +10,28 @@ const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchDataAndRender()
-
-})
+document.addEventListener("DOMContentLoaded", () => {
+  fetchDataAndRender();
+});
 // States
-<<<<<<< HEAD
-const maxPage = 1;
-const page = 1;
-let searchQuery = "";
-let url = "https://rickandmortyapi.com/api/character/?page=1";
-
-async function fetchDataAndRender(url) {
-=======
 let maxPage = 1;
 let page = 1;
-const searchQuery = "";
+let searchQuery = "";
 
 async function fetchDataAndRender() {
-
->>>>>>> main
   try {
- 
-    const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`
+    );
     const data = await response.json();
-    
+    console.log(data);
+
     let pages = data.info.pages;
     maxPage = pages;
-    
-   displayPagination(page, maxPage)
-    
-    
+
+    displayPagination(page, maxPage);
 
     const simplified_Data = data.results;
-    
 
     const characterInfo = simplified_Data
       .map((character) => {
@@ -66,8 +54,7 @@ async function fetchDataAndRender() {
   }
 }
 
-<<<<<<< HEAD
-fetchDataAndRender(url);
+// fetchDataAndRender(url);
 
 //search
 searchBar.addEventListener("submit", (letersdata) => {
@@ -77,51 +64,45 @@ searchBar.addEventListener("submit", (letersdata) => {
   const submitdata = Object.fromEntries(data);
 
   console.log(submitdata);
-  searchQuery = submitdata;
+  searchQuery = submitdata.query;
   console.log(searchQuery);
+  cleanHtml();
+  fetchDataAndRender();
 });
-=======
 
-nextButton.addEventListener('click', () => {
-    
+nextButton.addEventListener("click", () => {
+  if (page >= 42) {
+    page = 42;
+    displayPagination(page, maxPage);
+  }
 
-    if(page >= 42) {
-      page = 42; 
-      displayPagination(page, maxPage)
-      }
+  if (page < 42) {
+    page++;
+    cleanHtml();
 
-    if(page < 42) {
-      page++;
-      cleanHtml();
-
-      fetchDataAndRender();  
-    }
-})
-
-prevButton.addEventListener('click', () => {
-  
- 
-  if(page <= 1) {
-    page = 1; 
-    displayPagination(page, maxPage)
-  } 
-
-  if(page > 1) {
-    page--;
-    cleanHtml(); 
     fetchDataAndRender();
   }
-  
+});
 
-})
+prevButton.addEventListener("click", () => {
+  if (page <= 1) {
+    page = 1;
+    displayPagination(page, maxPage);
+  }
+
+  if (page > 1) {
+    page--;
+    cleanHtml();
+    fetchDataAndRender();
+  }
+});
 
 function cleanHtml() {
-  while(cardContainer.firstChild) {
-    cardContainer.removeChild(cardContainer.firstChild)
+  while (cardContainer.firstChild) {
+    cardContainer.removeChild(cardContainer.firstChild);
   }
 }
 
 function displayPagination(page, maxPage) {
   pagination.innerHTML = `${page}/${maxPage}`;
 }
->>>>>>> main
