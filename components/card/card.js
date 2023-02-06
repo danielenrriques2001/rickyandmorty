@@ -21,5 +21,6 @@ export function createCharacterCard(datatvshow) {
       <dd class="card__info-description">${datatvshow.episode.length}</dd>
     </dl>
   </div>`;
+
   return newCard;
 }

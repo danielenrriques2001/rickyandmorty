@@ -1,4 +1,4 @@
-import { createCharacterCard } from "./components/card/card";
+import { createCharacterCard } from "./components/card/card.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -24,7 +24,8 @@ async function fetchDataAndRender(url) {
 
     const simplified_Data = data.results;
     simplified_Data.forEach(character => {
-    
+     const card = createCharacterCard(character);
+     cardContainer.append(card)
     });
    
   } catch (error) {
