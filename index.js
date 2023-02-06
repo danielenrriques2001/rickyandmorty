@@ -52,15 +52,6 @@ async function fetchDataAndRender() {
       const card = createCharacterCard(character);
       cardContainer.append(card)
     });
-
-
-
-        return info;
-      })
-      .forEach((character) => {
-        const card = createCharacterCard(character);
-        cardContainer.append(card);
-      });
   } catch (error) {
     console.log("Something unexpected just happened!", error);
   }
