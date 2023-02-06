@@ -23,11 +23,27 @@ async function fetchDataAndRender(url) {
     const data = await response.json();
 
     const simplified_Data = data.results;
-    simplified_Data.forEach(character => {
-     const card = createCharacterCard(character);
-     cardContainer.append(card)
+
+    const characterInfo = simplified_Data.map((character) => {
+      
+      const info = {
+        name: character.name,
+        image: character.image,
+        type: character.type,
+        status: character.status,
+        episodes: character.episode.length
+      }
+
+      return info;
+        
+    }).forEach(character => {
+      const card = createCharacterCard(character);
+      cardContainer.append(card)
     });
-   
+
+      
+
+
   } catch (error) {
     console.log('Something unexpected just happened!', error)
   }
