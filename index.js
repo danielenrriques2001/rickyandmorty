@@ -53,7 +53,6 @@ async function fetchDataAndRender() {
       cardContainer.append(card)
     });
 
-      
 
 
   } catch (error) {
