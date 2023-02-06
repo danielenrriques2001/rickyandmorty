@@ -19,10 +19,6 @@ let page = 1;
 let searchQuery = "";
 
 async function fetchDataAndRender() {
-<<<<<<< HEAD
-=======
-
->>>>>>> main
   try {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`
@@ -58,11 +54,6 @@ async function fetchDataAndRender() {
   }
   
 }
-
-<<<<<<< HEAD
-// fetchDataAndRender(url);
-=======
->>>>>>> main
 
 //search
 searchBar.addEventListener("submit", (letersdata) => {
