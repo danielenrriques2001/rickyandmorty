@@ -19,6 +19,10 @@ let page = 1;
 let searchQuery = "";
 
 async function fetchDataAndRender() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
   try {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`
@@ -33,28 +37,32 @@ async function fetchDataAndRender() {
 
     const simplified_Data = data.results;
 
-    const characterInfo = simplified_Data
-      .map((character) => {
-        const info = {
-          name: character.name,
-          image: character.image,
-          type: character.type,
-          status: character.status,
-          episodes: character.episode.length,
-        };
+    const characterInfo = simplified_Data.map((character) => {
+      
+      const info = {
+        name: character.name,
+        image: character.image,
+        type: character.type,
+        status: character.status,
+        episodes: character.episode.length
+      }
 
-        return info;
-      })
-      .forEach((character) => {
-        const card = createCharacterCard(character);
-        cardContainer.append(card);
-      });
+      return info;
+        
+    }).forEach(character => {
+      const card = createCharacterCard(character);
+      cardContainer.append(card)
+    });
   } catch (error) {
     console.log("Something unexpected just happened!", error);
   }
+  
 }
 
+<<<<<<< HEAD
 // fetchDataAndRender(url);
+=======
+>>>>>>> main
 
 //search
 searchBar.addEventListener("submit", (letersdata) => {
