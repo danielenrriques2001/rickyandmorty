@@ -23,7 +23,7 @@ async function fetchDataAndRender() {
 
   try {
  
-    const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`);
+    const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
     const data = await response.json();
     
     let pages = data.info.pages;
