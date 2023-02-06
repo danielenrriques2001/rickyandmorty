@@ -1,7 +1,6 @@
 export function createCharacterCard(datatvshow) {
   const newCard = document.createElement("li");
-  ul.append(newCard);
-  newCard.classList.add("card-container");
+  newCard.classList.add("card");
   newCard.innerHTML = `
   <li class="card">
   <div class="card__image-container">
@@ -24,4 +23,5 @@ export function createCharacterCard(datatvshow) {
     </dl>
   </div>
 </li>`;
+  return newCard;
 }
