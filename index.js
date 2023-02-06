@@ -15,12 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 // States
+<<<<<<< HEAD
+const maxPage = 1;
+const page = 1;
+let searchQuery = "";
+let url = "https://rickandmortyapi.com/api/character/?page=1";
+
+async function fetchDataAndRender(url) {
+=======
 let maxPage = 1;
 let page = 1;
 const searchQuery = "";
 
 async function fetchDataAndRender() {
 
+>>>>>>> main
   try {
  
     const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`);
@@ -36,6 +45,7 @@ async function fetchDataAndRender() {
     const simplified_Data = data.results;
     
 
+<<<<<<< HEAD
     const characterInfo = simplified_Data.map((character) => {
       
       const info = {
@@ -54,13 +64,44 @@ async function fetchDataAndRender() {
     });
 
 
+=======
+    const characterInfo = simplified_Data
+      .map((character) => {
+        const info = {
+          name: character.name,
+          image: character.image,
+          type: character.type,
+          status: character.status,
+          episodes: character.episode.length,
+        };
+>>>>>>> dac10dd44e348e230297e28f5022649b7a661c96
 
+        return info;
+      })
+      .forEach((character) => {
+        const card = createCharacterCard(character);
+        cardContainer.append(card);
+      });
   } catch (error) {
-    console.log('Something unexpected just happened!', error)
+    console.log("Something unexpected just happened!", error);
   }
-
 }
 
+<<<<<<< HEAD
+fetchDataAndRender(url);
+
+//search
+searchBar.addEventListener("submit", (letersdata) => {
+  letersdata.preventDefault();
+
+  const data = new FormData(letersdata.target);
+  const submitdata = Object.fromEntries(data);
+
+  console.log(submitdata);
+  searchQuery = submitdata;
+  console.log(searchQuery);
+});
+=======
 
 nextButton.addEventListener('click', () => {
     
@@ -104,3 +145,4 @@ function cleanHtml() {
 function displayPagination(page, maxPage) {
   pagination.innerHTML = `${page}/${maxPage}`;
 }
+>>>>>>> main
