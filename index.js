@@ -45,6 +45,26 @@ async function fetchDataAndRender() {
     const simplified_Data = data.results;
     
 
+<<<<<<< HEAD
+    const characterInfo = simplified_Data.map((character) => {
+      
+      const info = {
+        name: character.name,
+        image: character.image,
+        type: character.type,
+        status: character.status,
+        episodes: character.episode.length
+      }
+
+      return info;
+        
+    }).forEach(character => {
+      const card = createCharacterCard(character);
+      cardContainer.append(card)
+    });
+
+
+=======
     const characterInfo = simplified_Data
       .map((character) => {
         const info = {
@@ -54,6 +74,7 @@ async function fetchDataAndRender() {
           status: character.status,
           episodes: character.episode.length,
         };
+>>>>>>> dac10dd44e348e230297e28f5022649b7a661c96
 
         return info;
       })
