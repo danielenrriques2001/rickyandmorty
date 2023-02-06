@@ -23,8 +23,10 @@ async function fetchDataAndRender(url) {
     const data = await response.json();
 
     const simplified_Data = data.results;
-    console.log(simplified_Data)
-
+    simplified_Data.forEach(character => {
+    
+    });
+   
   } catch (error) {
     console.log('Something unexpected just happened!', error)
   }
