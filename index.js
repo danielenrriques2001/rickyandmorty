@@ -1,4 +1,4 @@
-import { createCharacterCard } from "./card";
+import { createCharacterCard } from "./components/card/card";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
