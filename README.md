@@ -107,7 +107,7 @@ However, we want to tidy up our code so that not everything is written in a sing
 - The next and prev button as well as the pagination and the search bar are currently hard coded in
   the `index.html`. Remove the HTML code and generate them via JavaScript. Use the respective
   JavaScript component files for that.
-- The component functions should be called `createButton`, `createPagination`, and `createSearchBar`
+- The component functions should be called `createbutton`, `createPagination`, and `createSearchBar`
   and should return the created elements.
 - HINT: It is challenging to get the event listener functions right for these components. Use an
   extra input parameter `onClick` or `onSubmit` in your components.

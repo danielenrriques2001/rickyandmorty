@@ -1,4 +1,5 @@
 import { createCharacterCard } from "./components/card/card.js";
+import { CreateButtonPrevious } from "./components/nav-button/nav-button.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -6,7 +7,7 @@ const searchBarContainer = document.querySelector(
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-const prevButton = document.querySelector('[data-js="button-prev"]');
+// const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
@@ -33,26 +34,25 @@ async function fetchDataAndRender() {
 
     const simplified_Data = data.results;
 
-    const characterInfo = simplified_Data.map((character) => {
-      
-      const info = {
-        name: character.name,
-        image: character.image,
-        type: character.type,
-        status: character.status,
-        episodes: character.episode.length
-      }
+    const characterInfo = simplified_Data
+      .map((character) => {
+        const info = {
+          name: character.name,
+          image: character.image,
+          type: character.type,
+          status: character.status,
+          episodes: character.episode.length,
+        };
 
-      return info;
-        
-    }).forEach(character => {
-      const card = createCharacterCard(character);
-      cardContainer.append(card)
-    });
+        return info;
+      })
+      .forEach((character) => {
+        const card = createCharacterCard(character);
+        cardContainer.append(card);
+      });
   } catch (error) {
     console.log("Something unexpected just happened!", error);
   }
-  
 }
 
 //search
@@ -83,18 +83,20 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-prevButton.addEventListener("click", () => {
-  if (page <= 1) {
-    page = 1;
-    displayPagination(page, maxPage);
-  }
+navigation.append(CreateButtonPrevious());
 
-  if (page > 1) {
-    page--;
-    cleanHtml();
-    fetchDataAndRender();
-  }
-});
+// prevButton.addEventListener("click", () => {
+//   if (page <= 1) {
+//     page = 1;
+//     displayPagination(page, maxPage);
+//   }
+
+//   if (page > 1) {
+//     page--;
+//     cleanHtml();
+//     fetchDataAndRender();
+//   }
+// });
 
 function cleanHtml() {
   while (cardContainer.firstChild) {
